@@ -1,0 +1,40 @@
+<!-- <div class="row">
+  <div *ngFor="let s of servedService" class="col-md-4" style="padding-bottom: 10px;">
+    <form>
+      <div class="card shadow rounded ">
+        <div class="card-body">
+          <h5 class="card-text"><b>{{s.agencyname}} </b></h5>
+          <h6 class="card-text">{{s.first_name}} {{s.last_name}}</h6>
+          <h6 class="card-text">{{s.serviceName}}</h6>
+          <h6 style="color: red;" class="card-text">{{s.charges | currency:'INR'}}</h6>
+          <p class="card-text">{{s.servicedesc}}</p>
+          <label for="enqDate">Select Event Date</label>
+          <input style="float: right;" type="date" id="enqDate" name="enqDate" class="form-control datepicker"  [min]="minDate | date:'yyyy-MM-dd'" #enqDT>
+          <button class="btn btn-primary" value={{s.serviceproviderid}}
+            (click)="sendEnquiry(s,enqDT.value)">Enquire</button>
+        </div>
+      </div>
+    </form>
+   
+  </div>
+</div> -->
+
+<ul class="nav nav-tabs" role="tablist" style="margin-bottom: 10px;">
+  <li class="nav-item">
+    <span class="nav-link active" data-toggle="tab" (click)="getAllServiceProvider()">All Services</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link " data-toggle="tab" (click)="getCateringServiceProvider()">Catering</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link" data-toggle="tab" (click)="getPhographyServiceProvider()"> Photography</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link" data-toggle="tab" (click)="getVenueServiceProvider()"> Venue</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link" data-toggle="tab" (click)="getDecorationServiceProvider()"> Decoration</span>
+  </li>
+
+</ul>
+<router-outlet> </router-outlet>

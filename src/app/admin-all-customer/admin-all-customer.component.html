@@ -1,0 +1,29 @@
+<div style="margin-top: 10px;" class="table-responsive">
+
+    <table class="table table-hover table-fixed">
+        <thead>
+            <tr>
+                <th class="header" scope="col">Customer-ID</th>
+                <th class="header" scope="col">Customer-Firstname</th>
+                <th class="header" scope="col">Customer-Lastname</th>
+                <th class="header" scope="col">Contact No.</th>
+                <th class="header" scope="col">Account Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of cust">
+                <td> {{c.userid}} </td>
+                <td> {{c.first_name | uppercase}} </td>
+                <td> {{c.last_name | uppercase}} </td>
+                <td> {{c.mobile_no}} </td>
+                <span *ngIf="c.active;else elseBlock">
+                    <td style="color: green;"> Active </td>
+                </span>
+                <ng-template #elseBlock>
+                    <button class="btn btn-primary" (click)="activateUser(c.userid)">Activate</button>
+                </ng-template>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

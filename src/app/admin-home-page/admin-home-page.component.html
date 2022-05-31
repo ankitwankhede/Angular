@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" id="middlesidebar">
+            <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+
+                <button class="btn btn-secondary" (click)="logout()">Logout</button>
+            </div>
+            <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+                <h3 class="text-center">Admin Options</h3>
+                <ul>
+                    <li><span (click)="accountManagement()">Account Management</span></li>
+                    <li><span (click)="reportGeneration()">Monthly Reports</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="product_details" class="col-md-9 shadow p-3 mb-5 bg-white rounded"
+            style="height: 515px; margin-top: 15px;overflow: scroll;">
+            <div id="prd_srch">
+                <router-outlet> </router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

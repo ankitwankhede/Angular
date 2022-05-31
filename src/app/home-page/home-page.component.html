@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+  <a class="navbar-brand font-italic font-weight-bold" style="font-size: xx-large" href="#">Wedding Planner<span
+      class="sr-only">(current)</span></a>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <!-- <ul class="navbar-nav"> -->
+    <!-- <li class="nav-item active">
+          <a class="nav-link" routerLink=""
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li> -->
+    <!-- <li class="nav-item active">
+          <a class="nav-link" routerLink="/customerHomepage"
+            >Customer Home page </a
+          >
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/serviceProviderHomepage"
+            >Service Provider Home page </a
+          >
+        </li> -->
+    <!-- </ul> -->
+  </div>
+  <!-- <span *ngIf="!isLogged"> -->
+  <button  class="btn btn-secondary" (click)="login()">Login</button>
+  <!-- <button  class="btn btn-secondary" (click)="logout()">Logout</button>  -->
+</nav>
+
+<div class="container-fluid">
+  <router-outlet> </router-outlet>
+</div>

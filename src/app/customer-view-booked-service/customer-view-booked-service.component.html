@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table table-hover table-fixed">
+    <caption style="caption-side: top;">List of Booked Service</caption>
+    <!-- <thead style="position: sticky; top: 0;" class="thead-dark"> -->
+    <thead>
+      <tr>
+        <th class="header" scope="col">Agency Name</th>
+        <th class="header" scope="col">Service Provider First Name</th>
+        <th class="header" scope="col">Service Provider Last Name</th>
+        <th class="header" scope="col">Service Type</th>
+        <th class="header" scope="col">Charges</th>
+        <th class="header" scope="col">Count</th>
+        <th class="header" scope="col">Amount</th>
+        <th class="header" scope="col">Email</th>
+        <th class="header" scope="col">Moblie No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booked of bookedService">
+        <td>{{booked.servicepro.agencyname}}</td>
+        <td>{{booked.servicepro.first_name}}</td>
+        <td>{{booked.servicepro.last_name}}</td>
+        <td>{{booked.servicepro.services.servicetype}}</td>
+        <td>{{booked.servicepro.charges | currency:'INR'}}</td>
+        <td>{{booked.order_count}}</td>
+        <td>{{booked.servicepro.charges*booked.order_count | currency:'INR'}}</td>
+        <td>{{booked.servicepro.email}}</td>
+        <td>{{booked.servicepro.mobile_no}}</td>
+
+        <td *ngIf="!booked.paid ;else pay">
+          <button class="btn btn-primary"
+            (click)="makePayment(booked.servicepro.charges*booked.order_count,booked.orderid)">Pay</button>
+        </td>
+        <ng-template #pay><td style="color: green;">Payment Done</td></ng-template>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

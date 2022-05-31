@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3" id="middlesidebar">
+      <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+        <h6>Name : {{usr.first_name | titlecase }} {{usr.last_name | titlecase}}</h6>
+        <h6>Email : {{usr.email}}</h6>
+        <h6>Username :{{usr.username}}</h6>
+          <button  class="btn btn-secondary" (click)="logout()">Logout</button> 
+
+      </div>
+      <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+        <h3 class="text-center">Customer Options</h3>
+        <ul>
+          <li><span (click)="searchService()">Search Service</span></li>
+          <li><span (click)="viewBookedService()">View Booked Service</span></li>
+          <li><span (click)="viewEnquire()">View Enquire</span></li>
+          <li><span (click)="giveFeedback()">Give Feedback</span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="product_details" class="col-md-9 shadow p-3 mb-5 bg-white rounded"
+      style="height: 515px; margin-top: 15px;overflow: scroll;">
+      <div id="prd_srch">
+        <router-outlet> </router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

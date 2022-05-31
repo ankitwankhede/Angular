@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <table class="table table-hover table-fixed">
+        <caption>List of Booked Service</caption>
+        <!-- <thead style="position: sticky; top: 0;" class="thead-dark"> -->
+        <thead>
+            <tr>
+                <th class="header" scope="col">Order ID</th>
+                <th class="header" scope="col">Order Date</th>
+                <th class="header" scope="col">Order Count</th>
+                <th class="header" scope="col">User ID</th>
+                <th class="header" scope="col">UFirst Name</th>
+                <th class="header" scope="col">ULast Name</th>
+                <th class="header" scope="col">Mobile number</th>
+                <th class="header" scope="col">Service Type</th>
+
+            </tr>
+        </thead>
+        <!--  <tbody>
+            <tr *ngFor="let r of viewRequest">
+                 <th scope="row">{{r.orderid}}</th> 
+                <td>{{r.user.first_name}}</td>
+                <td>{{r.user.last_name}}</td>
+                <td>{{r.servicepro.service.servicetype}}</td>
+                <td>{{r.event_date}}</td>
+            <td>{{r.user.mobile_no}}</td>
+            <td>{{r.active}}</td>
+            <td>{{r.user.email}}</td>
+            
+          </tr>
+          
+    </tbody> -->
+        <tbody>
+            <tr *ngFor="let r of viewBookedServices">
+                <th scope="row">{{r.orderid}}</th>
+                <!--<td>{{r.orderid}}</td>-->
+                <td>{{r.order_date}}</td>
+                <td>{{r.order_count}}</td>
+                <td>{{r.user.userid}}</td>
+                <td>{{r.user.first_name}}</td>
+                <td>{{r.user.last_name}}</td>
+                <td>{{r.user.mobile_no}}</td>
+                <td>{{r.servicepro.servicedesc}}</td>
+
+
+            </tr>
+        </tbody>
+    </table>
+</div>

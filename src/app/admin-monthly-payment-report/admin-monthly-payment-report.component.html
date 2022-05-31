@@ -1,0 +1,43 @@
+<div class="form-check-inline">
+    <label style="margin-right: 25px;" class="form-check-label" for="strDate">Start Date: </label>
+    <input style="margin-right: 25px;" class="form-control " type="date" id="strDate" name="strDate" #strDT>
+    <label style="margin-right: 25px;" for="strDate">End Date: </label>
+    <input style="margin-right: 25px;" class="form-control " type="date" id="endDate" name="endDate" #endDT>
+    <button class="btn btn-primary" (click)="getReportGenaration(strDT.value,endDT.value)">Get Report</button>
+</div>
+
+<div style="margin-top: 10px;" class="table-responsive">
+
+    <table class="table table-hover table-fixed">
+        <thead>
+            <tr>
+                <th class="header">Customer ID</th>
+                <th class="header">Customer-Firstname</th>
+                <th class="header">Customer-Lastname</th>
+                <th class="header">Contact No.</th>
+                <th class="header">Service Provider-Firstname</th>
+                <th class="header">Service Provider-Lastname</th>
+                <th class="header">Service Type</th>
+                <th class="header">Order ID</th>
+                <th class="header">Order Date</th>
+                <th class="header">Transaction ID</th>
+                <th class="header">Payment Date</th>
+                <th class="header">Amount</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let r of rprt">
+            <td> {{r.order.user.userid}} </td>
+            <td> {{r.order.user.first_name | uppercase}} </td>
+            <td> {{r.order.user.last_name | uppercase}} </td>
+            <td> {{r.order.user.mobile_no}} </td>
+            <td> {{r.order.servicepro.first_name | uppercase}} </td>
+            <td> {{r.order.servicepro.last_name | uppercase}} </td>
+            <td> {{r.order.servicepro.service.servicetype}} </td>
+            <td> {{r.order.orderid}} </td>
+            <td> {{r.order.order_date}} </td>
+            <td> {{r.transactionid}} </td>
+            <td> {{r.date_payment}} </td>
+            <td> {{r.amount}} </td>
+        </tr>
+    </table>
+</div>

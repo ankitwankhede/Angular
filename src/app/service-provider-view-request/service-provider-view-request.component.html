@@ -1,0 +1,38 @@
+<div class="table-responsive">
+    <table class="table table-hover table-fixed">
+        <caption>List of requested Service</caption>
+        <!-- <thead style="position: sticky; top: 0;" class="thead-dark"> -->
+        <thead>
+            <tr>
+                <th class="header" scope="col">First Name</th>
+                <th class="header" scope="col">Last Name</th>
+                <th class="header" scope="col">Service Type</th>
+                <th class="header" scope="col">Event Date</th>
+                <th class="header" scope="col">Mobile Number</th>
+                <th class="header" scope="col">Email</th>
+                <th class="header" scope="col">Payment Status</th>
+                <th class="header" scope="col">Change status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of viewRequest">
+                <!-- <th scope="row">{{r.orderid}}</th> -->
+                <td>{{r.user.first_name}}</td>
+                <td>{{r.user.last_name}}</td>
+                <td>{{r.servicepro.services.servicetype}}</td>
+                <td>{{r.event_date}}</td>
+                <td>{{r.user.mobile_no}}</td>
+                <td>{{r.user.email}}</td>
+                <span *ngIf="r.paid ;else f">
+                    <td>Yes</td>
+                </span>
+                <ng-template #f><td>No</td></ng-template>
+                <td *ngIf="!r.available;else n">
+                    <button class="btn btn-primary"(click)="changeRequest(r.enquireid)">Accept</button>
+                </td>
+                <ng-template #n><td>Accepted</td></ng-template>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

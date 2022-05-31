@@ -1,0 +1,38 @@
+<div class="table-responsive">
+    <table class="table table-hover table-fixed">
+        <caption style="caption-side: top;">List of Enquiry </caption>
+        <thead>
+            <tr>
+                <th class="header" scope="col">Agency Name</th>
+                <th class="header" scope="col">Service Provider First Name</th>
+                <th class="header" scope="col">Service Provider Last Name</th>
+                <th class="header" scope="col">Service Type</th>
+                <th class="header" scope="col">Request accepted</th>
+                <th class="header" scope="col">Event Date</th>
+                <th class="header"  scope="col">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of enq">
+                <td>{{e.servicepro.agencyname}}</td>
+                <td>{{e.servicepro.first_name}}</td>
+                <td>{{e.servicepro.last_name}}</td>
+                <td>{{e.servicepro.services.servicetype}}</td>
+                <span *ngIf="e.available;else elseBlock">
+                    <td style="color: green;">Yes</td>
+                </span>
+                <ng-template #elseBlock>
+                    <td style="color: red;">No</td>
+                </ng-template>
+                <td>{{e.event_date}}</td>
+                <span class="form-check-inline" *ngIf="e.available && !isPayed">
+                    <td> 
+                        <input type="number"  class="form-control form-control-sm" style="width: 50px;" min="0" #cnt />
+                        <button  style="margin-top: 15px;" class="btn btn-primary"
+                        (click)="placeOrder(e.servicepro.serviceproviderid,cnt.value,e.event_date)">Book</button>
+                </td>
+                </span>
+            </tr>
+        </tbody>
+    </table>
+</div>

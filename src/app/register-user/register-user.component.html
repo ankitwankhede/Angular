@@ -1,0 +1,126 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 shadow rounded ">
+            <h2 class="text-md-center ">New Customer Registration</h2>
+            <!-- <form #f="ngForm" (submit)="f.valid && Register()" > -->
+            <form #f="ngForm" (submit)="f.valid&&Register()">
+                <div class="form-group">
+                    <!-- <label for="fnm">First Name:</label> -->
+                    <input [(ngModel)]="cus.username" #unm="ngModel"  type="text" name="unm"
+                        class="form-control form-control-sm" placeholder="User Name" required minlength="6" />
+                        <div *ngIf="f.submitted && unm.invalid &&(unm.dirty || unm.touched)">
+                            <div *ngIf="unm.errors?.required">
+                                <h6 style="color: red;"> user name is compulsory</h6>
+                            </div>
+                            <div *ngIf="unm.errors?.minlength">
+                                <h6 style="color: red;"> user name should be atleast 6 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="fnm">First Name:</label> -->
+                    <input [(ngModel)]="cus.first_name" #fnm="ngModel"  type="text" name="fnm"
+                        class="form-control form-control-sm" placeholder="First Name" required minlength="2" />
+                        <div *ngIf="f.submitted && fnm.invalid">
+                            <div *ngIf="fnm.errors?.required">
+                                <h6 style="color: red;"> First name is compulsory</h6>
+                            </div>
+                            <div *ngIf="fnm.errors?.minlength">
+                                <h6 style="color: red;">First name should be atleast 2 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="lnm">Last Name:</label> -->
+                    <input [(ngModel)]="cus.last_name" #lnm="ngModel"  type="text" name="lnm"
+                        class="form-control form-control-sm" placeholder="Last Name" required minlength="4" />
+                        <div *ngIf="f.submitted && lnm.invalid">
+                            <div *ngIf="lnm.errors?.required">
+                                <h6 style="color: red;">Last name is compulsory</h6>
+                            </div>
+                            <div *ngIf="lnm.errors?.minlength">
+                                <h6 style="color: red;"> Last name should be atleast 4 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >Email id :</label> -->
+                    <input [(ngModel)]="cus.email" #mail="ngModel" id="eml" type="email" name="uemail"
+                        class="form-control form-control-sm" placeholder="Email id" required email />
+                        <div *ngIf="f.submitted && mail.invalid">
+                            <div *ngIf="mail.errors?.required">
+                                <h6 style="color: red;"> Email is compulsory</h6>
+                            </div>
+                            <div *ngIf="mail.errors?.minlength">
+                                <h6 style="color: red;">  Email should be Valid</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="pwd">Password :</label> -->
+                    <input [(ngModel)]="cus.password" #pwd="ngModel" id="pwd" type="password" name="pwd"
+                        class="form-control form-control-sm" placeholder="Password" required minlength="8" />
+                        <div *ngIf="f.submitted && pwd.invalid">
+                            <div *ngIf="pwd.errors?.required">
+                                <h6 style="color: red;"> Password is compulsory</h6>
+                            </div>
+                            <div *ngIf="pwd.errors?.minlength">
+                                <h6 style="color: red;"> Password should be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="mno">Mobile No:</label> -->
+                    <input [(ngModel)]="cus.mobile_no" #mno="ngModel" id="mno" type="number" name="mno"
+                        class="form-control form-control-sm" placeholder="Mobile No" required minlength="10" maxlength="10" />
+                        <div *ngIf="f.submitted && mno.invalid">
+                            <div *ngIf="mno.errors?.required">
+                                <h6 style="color: red;"> Mobile number is compulsory</h6>
+                            </div>
+                            <div *ngIf="mno.errors?.minlength">
+                                <h6 style="color: red;">  Mobile number is having less than  10 digits</h6>
+                            </div>
+                            <div *ngIf="mno.errors?.maxlength">
+                                <h6 style="color: red;">  Mobile number is having greater than  10 digits</h6>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="cus.add_line1" #ad1="ngModel" id="add1" type="text" name="cadd1"
+                        class="form-control form-control-sm" placeholder="Address line 1" required minlength="8" />
+                        <div *ngIf="f.submitted && ad1.invalid">
+                            <div *ngIf="ad1.errors?.required">
+                                <h6 style="color: red;">  address 1 is compulsory</h6>
+                            </div>
+                            <div *ngIf="ad1.errors?.minlength">
+                                <h6 style="color: red;">  address 1 should be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="cus.add_line2" #ad2="ngModel" id="add2" type="text" name="cadd2"
+                        class="form-control form-control-sm" placeholder="Address line 2" required minlength="8"/>
+                        <div *ngIf="f.submitted && ad2.invalid">
+                            <div *ngIf="ad2.errors?.required">
+                                <h6 style="color: red;">   address 2 is compulsory</h6>
+                            </div>
+                            <div *ngIf="ad2.errors?.minlength">
+                                <h6 style="color: red;">   address 2 be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+
+                <input type="submit" style="margin-left: 160px;" value="Register" class="btn btn-outline-success" />
+                <span *ngIf="res.result">
+                    <h6 style="color: green;">Customer Details Inserted!</h6>
+                </span>
+            </form>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+</div>

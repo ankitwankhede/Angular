@@ -1,0 +1,26 @@
+<div style="margin-top: 10px;" class="table-responsive">
+
+    <table class="table table-hover table-fixed">
+        <tr>
+            <th class="header" scope="col">Service Provider-ID</th>
+            <th class="header" scope="col">Service Provider-Firstname</th>
+            <th class="header" scope="col">Service Provider-Lastname</th>
+            <th class="header" scope="col">Contact No.</th>
+            <th class="header" scope="col">Service Description</th>
+            <th class="header" scope="col">Account Status</th>
+        </tr>
+        <tr *ngFor="let s of servicep">
+            <td> {{s.serviceproviderid}} </td>
+            <td> {{s.first_name | uppercase}} </td>
+            <td> {{s.last_name | uppercase}} </td>
+            <td> {{s.mobile_no}} </td>
+            <td> {{s.servicedesc}} </td>
+            <span *ngIf="s.active;else elseBlock">
+                <td style="color: green;"> Active </td>
+            </span>
+            <ng-template #elseBlock>
+                <button class="btn btn-primary"(click)="activateSerPro(s.serviceproviderid)">Activate</button>
+            </ng-template>
+        </tr>
+    </table>
+</div>

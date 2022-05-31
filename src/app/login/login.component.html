@@ -1,0 +1,60 @@
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 border shadow rounded ">
+      <h1 class="text-md-center "> Login </h1>
+      <form #f="ngForm" (submit)="f.valid&& login()">
+        <div class="form-group">
+          <label for="uid">Enter username :</label>
+          <input type="text" [(ngModel)]="logincred.username" #usnm="ngModel" name="id" id="uid" class="form-control form-control-sm" required minlength="6" />
+          <div *ngIf="f.submitted && usnm.invalid">
+            <div *ngIf="usnm.errors?.required">
+              <h6 style="color: red;"> user name is required</h6>
+            </div>
+            <div *ngIf="usnm.errors?.minlength">
+              <h6 style="color: red;"> user name should be atleast 6 chars long</h6>
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Enter Password :</label>
+          <input type="password" [(ngModel)]="logincred.pwd" #pwd="ngModel" name="pwd" id="pwd" class="form-control form-control-sm" required minlength="8" />
+          <div *ngIf="f.submitted && pwd.invalid">
+            <div *ngIf="pwd.errors?.required">
+              <h6 style="color: red;"> password is required</h6>
+            </div>
+            <div *ngIf="pwd.errors?.minlength">
+              <h6 style="color: red;"> Password should be atleast 8 chars long</h6>
+          </div>
+          </div>
+        </div>
+        <div class="form-group text-center" (change)="getUserType($event)">
+          <div style="padding-left: 90px;" class="form-check-inline" style="padding-bottom: 20px;">
+            <label class="form-check-label" for="radio1">
+              <input type="radio" class="form-check-input" id="radio1" name="optradio" value="C">Customer
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label" for="radio2">
+              <input type="radio" class="form-check-input" id="radio2" name="optradio" value="S">Service Provider
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label" for="radio3">
+              <input type="radio" class="form-check-input" id="radio3" name="optradio" value="A">Admin
+            </label>
+          </div>
+        </div>
+        <div class="form-check-inline" style="padding-left: 160px;">
+          <input type="submit" value="submit" class="btn btn-outline-success" />
+        </div>
+      </form>
+      <div style="padding-bottom: 20px;">
+        <a style="padding-left: 60px;padding-right: 20px;" routerLink="/registerCustomer">New Customer</a>|
+        <a style="padding-left: 20px;" routerLink="/registerServiceProvider">New Service Provider</a>
+
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

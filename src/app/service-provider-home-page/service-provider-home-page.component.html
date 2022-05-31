@@ -1,0 +1,41 @@
+<!-- <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+    <span *ngIf="true">
+      <button class="btn btn-secondary" type="button" routerLink="app-login">
+        Login
+      </button>
+    </span>
+  </nav>
+   -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3" id="middlesidebar">
+      <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+        <h6>Name : {{serpro.first_name | titlecase }} {{serpro.last_name | titlecase}}</h6>
+        <h6>Agency Name :{{serpro.agencyname}}</h6>
+        <h6>Email : {{serpro.email}}</h6>
+        <h6>Username :{{serpro.username}}</h6>
+        <button  class="btn btn-secondary" (click)="logout()">Logout</button> 
+
+      </div>
+      <div style="padding: 9px; margin-top: 15px" class="shadow p-3 mb-5 bg-white rounded">
+        <h3 class="text-center">Service Provider Options</h3>
+        <ul>
+          <!-- <li><a routerLink="/updateAccount">Update Account</a></li>
+              <li><a routerLink="/serviceHistory">History</a></li> -->
+          <li><span (click)="viewRequest()">View Request</span></li>
+          <li><span (click)="viewBooking()">View Booking</span></li>
+          <li><span (click)="history()">History</span></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div id="product_details" class="col-md-9 shadow p-3 mb-5 bg-white rounded"
+      style="height: 515px; margin-top: 15px;overflow: scroll;">
+      <div id="prd_srch">
+        <router-outlet> </router-outlet>
+      </div>
+    </div>
+  </div>
+
+</div>

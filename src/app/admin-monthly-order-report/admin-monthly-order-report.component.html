@@ -1,0 +1,39 @@
+<div class="form-check-inline">
+    <label style="margin-right: 25px;" class="form-check-label" for="strDate">Start Date: </label> 
+    <input style="margin-right: 25px;" class="form-control " type="date" id="strDate" name="strDate" #strDT>
+    <label style="margin-right: 25px;" class="form-check-label" for="strDate">End Date: </label> 
+    <input style="margin-right: 25px;" class="form-control " type="date" id="endDate" name="endDate" #endDT>
+    <button class="btn btn-primary"  (click)="getReportGenaration(strDT.value,endDT.value)">Get Report</button>
+</div>
+<br />
+<div style="margin-top: 10px;" class="table-responsive">
+
+    <table class="table table-hover table-fixed">
+        <thead>
+            <tr>
+                <th class="header" scope="col">Customer ID</th>
+                <th class="header" scope="col">Customer-Firstname</th>
+                <th class="header" scope="col">Customer-Lastname</th>
+                <th class="header" scope="col">Contact No.</th>
+                <th class="header" scope="col">Service Provider-Firstname</th>
+                <th class="header" scope="col">Service Provider-Lastname</th>
+                <th class="header" scope="col">Service Type</th>
+                <th class="header" scope="col">Service Charges</th>
+                <th class="header" scope="col">Order ID</th>
+                <th class="header" scope="col">Order Date</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let r of ordrs">
+            <td> {{r.user.userid}} </td>
+            <td> {{r.user.first_name | uppercase}} </td>
+            <td> {{r.user.last_name | uppercase}} </td>
+            <td> {{r.user.mobile_no}} </td>
+            <td> {{r.servicepro.first_name | uppercase}} </td>
+            <td> {{r.servicepro.last_name | uppercase}} </td>
+            <td> {{r.servicepro.services.servicetype}} </td>
+            <td> {{r.servicepro.charges}} </td>
+            <td> {{r.orderid}} </td>
+            <td> {{r.order_date}} </td>
+        </tr>
+    </table>
+</div>

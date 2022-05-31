@@ -1,0 +1,190 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 shadow rounded ">
+            <h4 class="text-md-center ">New service Provider Registration</h4>
+            <!-- <form #f="ngForm" (submit)="f.valid && Register()" > -->
+            <form #f="ngForm" (submit)="f.valid&&Register()">
+                <div class="form-group">
+                    <!-- <label for="unm">User name:</label> -->
+                    <input [(ngModel)]="serpro.username" #unm="ngModel" id="unm" type="text" name="unm"
+                        class="form-control form-control-sm" placeholder="User Name" required minlength="6" />
+                        <div *ngIf="f.submitted && unm.invalid">
+                            <div *ngIf="unm.errors?.required">
+                                <h6 style="color: red;"> user name is compulsory</h6>
+                            </div>
+                            <div *ngIf="unm.errors?.minlength">
+                                <h6 style="color: red;"> user name should be atleast 6 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- [(ngModel)]="serpro.serviceid"  #sid="ngModel" -->
+                    <select class="form-control" id="service_option" (change)="getserviceId($event)">
+                        <option>Select Service</option>
+                        <option #servid *ngFor="let s of sers" [value]="s.serviceid">
+                            {{s.servicetype}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="fnm">First Name:</label> -->
+                    <input [(ngModel)]="serpro.agencyname" #agnm="ngModel" id="agennm" type="text" name="agnm"
+                        class="form-control form-control-sm" placeholder="Agency Name" required minlength="5" />
+                        <div *ngIf="f.submitted && agnm.invalid">
+                            <div *ngIf="agnm.errors?.required">
+                                <h6 style="color: red;"> Agency name is compulsory</h6>
+                            </div>
+                            <div *ngIf="agnm.errors?.minlength">
+                                <h6 style="color: red;">Agency name should be atleast 5 chars long</h6>
+                            </div>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="fnm">First Name:</label> -->
+                    <input [(ngModel)]="serpro.first_name" #fnm="ngModel" id="fnm" type="text" name="fnm"
+                        class="form-control form-control-sm" placeholder="First Name" required minlength="2" />
+                        <div *ngIf="f.submitted && fnm.invalid">
+                            <div *ngIf="fnm.errors?.required">
+                                <h6 style="color: red;"> First name is compulsory</h6>
+                            </div>
+                            <div *ngIf="fnm.errors?.minlength">
+                                <h6 style="color: red;">First name should be atleast 2 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="lnm">Last Name:</label> -->
+                    <input [(ngModel)]="serpro.last_name" #lnm="ngModel" id="lnm" type="text" name="lnm"
+                        class="form-control form-control-sm" placeholder="Last Name" required minlength="4" />
+                        <div *ngIf="f.submitted && lnm.invalid">
+                            <div *ngIf="lnm.errors?.required">
+                                <h6 style="color: red;">Last name is compulsory</h6>
+                            </div>
+                            <div *ngIf="lnm.errors?.minlength">
+                                <h6 style="color: red;"> Last name should be atleast 4 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >Email id :</label> -->
+                    <input [(ngModel)]="serpro.email" #mail="ngModel" id="eml" type="email" name="semail"
+                        class="form-control form-control-sm" placeholder="Email id" required email/>
+                        <div *ngIf="f.submitted && mail.invalid">
+                            <div *ngIf="mail.errors?.required">
+                                <h6 style="color: red;"> Email is compulsory</h6>
+                            </div>
+                            <div *ngIf="mail.errors?.minlength">
+                                <h6 style="color: red;">  Email should be Valid</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="pwd">Password :</label> -->
+                    <input [(ngModel)]="serpro.password" #pwd="ngModel" id="pwd" type="password" name="pwd"
+                        class="form-control form-control-sm" placeholder="Password" required minlength="8"/>
+                        <div *ngIf="f.submitted && pwd.invalid">
+                            <div *ngIf="pwd.errors?.required">
+                                <h6 style="color: red;"> Password is compulsory</h6>
+                            </div>
+                            <div *ngIf="pwd.errors?.minlength">
+                                <h6 style="color: red;"> Password should be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="mno">Mobile No:</label> -->
+                    <input [(ngModel)]="serpro.mobile_no" #mno="ngModel" id="mno" type="number" name="mno"
+                        class="form-control form-control-sm" placeholder="Mobile No" required minlength="10" maxlength="10" />
+                        <div *ngIf="f.submitted && mno.invalid">
+                            <div *ngIf="mno.errors?.required">
+                                <h6 style="color: red;"> Mobile number is compulsory</h6>
+                            </div>
+                            <div *ngIf="mno.errors?.minlength">
+                                <h6 style="color: red;">  Mobile number is having less than  10 digits</h6>
+                            </div>
+                            <div *ngIf="mno.errors?.maxlength">
+                                <h6 style="color: red;">  Mobile number is having greater than  10 digits</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="serpro.add_line1" #add1="ngModel" id="sadd1" type="text" name="sadd1"
+                        class="form-control form-control-sm" placeholder="Address line 1" required minlength="8"/>
+                        <div *ngIf="f.submitted && add1.invalid">
+                            <div *ngIf="add1.errors?.required">
+                                <h6 style="color: red;">  address 1 is compulsory</h6>
+                            </div>
+                            <div *ngIf="add1.errors?.minlength">
+                                <h6 style="color: red;">  address 1 should be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="serpro.add_line2" #add2="ngModel" id="sadd2" type="text" name="sadd2"
+                        class="form-control form-control-sm" placeholder="Address line 2" required minlength="8" />
+                        <div *ngIf="f.submitted && add2.invalid">
+                            <div *ngIf="add2.errors?.required">
+                                <h6 style="color: red;">  address 2 is compulsory</h6>
+                            </div>
+                            <div *ngIf="add2.errors?.minlength">
+                                <h6 style="color: red;">  address 2 should be atleast 8 chars long</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="serpro.experience_year" #exp="ngModel" id="serexp" type="number" name="serexp"
+                        class="form-control form-control-sm" placeholder="Experience" required min="0" maxlength="2" />
+                        <div *ngIf="f.submitted && exp.invalid">
+                            <div *ngIf="exp.errors?.required">
+                                <h6 style="color: red;">  Experience is compulsory</h6>
+                            </div>
+                            <div *ngIf="exp.errors?.maxlength">
+                                <h6 style="color: red;">  Experience should be of 2 digits</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input [(ngModel)]="serpro.charges" #charge="ngModel" id="scharg" type="number" name="scharg"
+                        class="form-control form-control-sm" placeholder="Charges" min="0" required maxlength="6" />
+                        <div *ngIf="f.submitted && charge.invalid">
+                            <div *ngIf="charge.errors?.required">
+                                <h6 style="color: red;">  Service Charges is compulsory</h6>
+                            </div>
+                            <div *ngIf="charge.errors?.maxlength">
+                                <h6 style="color: red;">  Service Charges should be of 6 digits and valid</h6>
+                            </div>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <!-- <label for="eml" >address :</label> -->
+                    <input style="height: 80px;" [(ngModel)]="serpro.servicedesc" #serdesc="ngModel" id="sdesc"
+                        type="text" name="sdesc" class="form-control form-control-sm"
+                        placeholder="Service Description" required minlength="10" maxlength="40"/>
+                        <div *ngIf="f.submitted && serdesc.invalid">
+                            <div *ngIf="serdesc.errors?.required">
+                                <h6 style="color: red;">  Service Descrption is compulsory</h6>
+                            </div>
+                            <div *ngIf="serdesc.errors?.minlength">
+                                <h6 style="color: red;">  Service Description be minimum of 10 characters</h6>
+                            </div>
+                            <div *ngIf="serdesc.errors?.maxlength">
+                                <h6 style="color: red;">  Service Description be max of 40 characters</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                <input type="submit" style="margin-left: 160px;" value="Register" class="btn btn-outline-success" />
+                <span *ngIf="res">
+                    <h6 style="color: rgb(140, 207, 140);">Service Provider Details Inserted!</h6>
+                </span>
+            </form>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+</div>
